@@ -1,3 +1,5 @@
+// Based on https://makeshiftinsights.com/blog/heatmaps-leaflet-heatmap-js/
+
 const url = new URL(document.location);
 var src = url.searchParams.get('src');
 var freq = url.searchParams.get('freq');
@@ -42,7 +44,7 @@ function render(){
 
       let heatmapLayer = new HeatmapOverlay(cfg)
 
-      // Determine min/max (from data.js file) for the heatmap.js plugin
+      // Determine min/max  for the heatmap.js plugin
       let min = Math.min(...data.map(data => data.value))
       let max = Math.max(...data.map(data => data.value))
 
@@ -63,7 +65,7 @@ function render(){
         layers: [baseLayer, heatmapLayer]
       })
 
-      // Add data (from sales.js file) to the heatmap.js layer
+      // Add data  to the heatmap.js layer
       heatmapLayer.setData({
         min: min,
         max: max,
