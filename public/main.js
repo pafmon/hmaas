@@ -7,17 +7,23 @@ var freq = url.searchParams.get('freq');
 console.log(`src = <${src}>`);
 console.log(`freq = <${freq}>`);
 
-if(src==null)
-  src= "/u/1.json";
+if(src==null){
+  var userId = Math.floor(Math.random()*6) + 1;
+  src= "/u/"+userId+".json";
+}
+  
 
 if(freq==null)
   freq = 10;
 
 freq = freq*1000;
 
-render();
 
+
+render();
 setInterval(render, freq);
+
+
 
 function render(){
 
@@ -35,14 +41,13 @@ function render(){
           attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a>'
         }
       )
-
+      
       // Configure and create the heatmap.js layer
       let cfg = {
         "radius": 40,
         "useLocalExtrema": true
       }
-
-      let heatmapLayer = new HeatmapOverlay(cfg)
+      let heatmapLayer = new HeatmapOverlay(cfg);
 
       // Determine min/max  for the heatmap.js plugin
       let min = Math.min(...data.map(data => data.value))
