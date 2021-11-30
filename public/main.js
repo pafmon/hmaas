@@ -45,7 +45,8 @@ function render(){
       // Configure and create the heatmap.js layer
       let cfg = {
         "radius": 40,
-        "useLocalExtrema": true
+        "useLocalExtrema": true,
+        "valueField": 'frequency'
       }
       let heatmapLayer = new HeatmapOverlay(cfg);
 
