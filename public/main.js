@@ -65,8 +65,8 @@ function render(){
       let heatmapLayer = new HeatmapOverlay(cfg);
 
       // Determine min/max  for the heatmap.js plugin
-      let min = Math.min(...data.map(data => data.value))
-      let max = Math.max(...data.map(data => data.value))
+      let min = Math.min(...data.map(data => data[cfg.valueField]))
+      let max = Math.max(...data.map(data => data[cfg.valueField]))
 
 
       var element = document.getElementById("map");
