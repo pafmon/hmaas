@@ -48,6 +48,16 @@ function render(){
         "useLocalExtrema": true,
         "valueField": 'frequency'
       }
+      
+      if(data[0].lat == null)
+          if(data[0].latitude != null)
+            cfg.latField = "latitude";      
+      
+      if(data[0].lng == null)
+          if(data[0].longitude != null)
+            cfg.latField = "longitude";      
+      
+      
       let heatmapLayer = new HeatmapOverlay(cfg);
 
       // Determine min/max  for the heatmap.js plugin
