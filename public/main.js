@@ -55,7 +55,7 @@ function render(){
       
       if(data[0].lng == null)
           if(data[0].longitude != null)
-            cfg.latField = "longitude";      
+            cfg.lngField = "longitude";      
       
       
       let heatmapLayer = new HeatmapOverlay(cfg);
