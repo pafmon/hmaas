@@ -50,12 +50,16 @@ function render(){
       }
       
       if(data[0].lat == null)
-          if(data[0].latitude != null)
+          if(data[0].latitude != null){
             cfg.latField = "latitude";      
-      
+            data[0].lat = data[0].latitude;
+          }
+            
       if(data[0].lng == null)
-          if(data[0].longitude != null)
-            cfg.lngField = "longitude";      
+          if(data[0].longitude != null){
+            cfg.lngField = "longitude"; 
+            data[0].lng = data[0].longitude;
+          }
       
       
       let heatmapLayer = new HeatmapOverlay(cfg);
