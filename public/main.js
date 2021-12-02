@@ -11,14 +11,11 @@ if(src==null){
   var userId = Math.floor(Math.random()*6) + 1;
   src= "/u/"+userId+".json";
 }
-  
 
 if(freq==null)
   freq = 10;
 
 freq = freq*1000;
-
-
 
 render();
 setInterval(render, freq);
@@ -92,10 +89,41 @@ function render(){
         data: data
       });
     
-    
+      var d = document.getElementById('msg');
+      
+      if(d)
+        d.parentNode.removeChild(d);
+      
+      d = document.createElement('div');
+      d.setAttribute("id", "msg");
+
+      document.body.appendChild(d);
+      d.innerHTML = "Last update: "+Date().toString();
+      d.style.left = "75px";
+      d.style.fontSize = "medium";
+      d.style.backgroundColor = "white";
+      d.style.padding = "5px";
+
     })
       .catch(error => {
-      console.log(error)
+        
+        var d = document.getElementById('msg');
+      
+        if(d)
+          d.parentNode.removeChild(d);
+      
+        d = document.createElement('div');
+        d.setAttribute("id", "msg");
+
+        document.body.appendChild(d);
+        d.innerHTML = "Data Flow unavailable.";
+        d.style.position = "absolute";
+        d.style.left = "300px";
+        d.style.fontSize = "large";
+        d.style.backgroundColor = "#ff8200";
+        d.style.padding = "10px";
+        
+        console.log("Error fetching data: "+error)
     });
 
   }
